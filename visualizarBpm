@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="Página para verificar frequência cardíaca">
+        <meta name="description" content="Página que representa um app">
+
+        <title>Roupa Animal para Monitoramento de Saúde (RAPMS)</title>
+
+        <link rel="stylesheet" href="css/formPopup.css">
+        <link rel="stylesheet" href="css/principal.css">
+        <link rel="stylesheet" href="css/detalhe.css">
+        <link rel="stylesheet" href="css/entraar.css">
+        <link rel="stylesheet" href="css/recSenha.css">
+    </head>
+    
+    <?php
+    include_once './inc/cadastrarUsuario.php';
+    include_once './inc/login.php';
+    include_once './inc/inicio.php';
+    ?>
+    <div class="detalhe">
+        <?php
+        require_once 'classes/Usuario.php';
+        session_start();
+        if (isset($_SESSION["usuario"])) {
+            $usuario = $_SESSION["usuario"];
+            ?>
+            <a href="#"><?= $usuario->getNome(); ?></a>
+            <a href="ws/wsLogout.php">Sair</a>
+        <?php } else {
+            ?>
+            <a style="text-decoration:none;" href="index.php">Inicio</a>
+            <a style="text-decoration:none;" href="#" onclick="showPopup('popupLogin', 'block')">Entrar</a>
+            <a style="text-decoration:none;" href="#" onclick="showPopup('id01', 'block')">Cadastre-se</a>
+            <a style="text-decoration:none;" href="recuperarSenha.php">Recuperar-Senha</a>
+            <a style="text-decoration:none;" href="desenvolvedores.php" class="direita">Desenvolvedores</a>
+           
+            <?php
+        }
+        ?>
+    </div>
+    <body> 
+        <div class="freq">
+            <img src="img/teste.gif" alt="Freq" width="800" height="400">
+        </div>
+        <h3>65 BPM</h3>
+        <div class="visuhis">
+            <input class="btn" type="submit" value="Visualizar histórico">
+        </div>
+        <script src="js/formPopup.js"></script>
+        <div class="rodape">
+         <p> Copyright © 2018-2019 - Roupa Animal para Monitoramento de Saúde (RAPMS) - IFRN Campus Santa Cruz </p>
+     </div>
+</html>
